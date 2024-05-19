@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    
+    <link href="./css/ShoppingBag.css" rel="stylesheet" />
+    <script src="scripts/ShoppingBag.js"></script>
+    <meta charset="utf-8" />
+    <title></title>
+    <template id="temp-row">
+        <tr class="item-row">
+            <td class="imageColumn"><div class="image"><img /></div></td>
+            <td class="descriptionColumn"><div><h3 class="itemName"></h3></div></td>
+            <td class="availabilityColumn"><div>במלאי</div></td>
+            <td class="quantityColumn"><div class="quantity">1</div></td>
+            <td class="totalColumn delete"><div class="price" style="height: 99px;"></div></td>
+            <td class="deleteColumn"><div class="delBtn"><a href="#" title="לחצו כאן כדי להסיר את פריט זה" class="Hide DeleteButton showText">
+    <img src="images/icn-remove.png" />
+</a></div></td>
+            <td class="changeQuantityColumn"><button class="plus">הוסף</button><button class="minus">הפחת</button></td>
+        </tr>
+    </template>
+</head>
+<body>
+    <div class="cart">
+        <div id="title">
+            <h1> סל קניות </h1>
+            <p>
+                הסל שלך מכיל <span id="itemCount"></span> פריטים ומגיע לסך של <span id="totalAmount"></span>.
+            </p>
+            <a id="placeOr" class="nxbtn primary GoToCheckout TopLink checkout_transfer" href="#">לביצוע ההזמנה</a> <a class="shopmore" href="Products.html?fromShoppingBag=1">המשך בקניה</a> <div class="ClearBoth"></div>
+        </div>
+        <div class="cistGroup">
+            <table id="items" class="items">
+                <thead>
+                    <tr>
+                        <th>תמונה</th>
+                        <th>פריטים</th>
+                        <th>זמינות</th>
+                        <th>כמות</th>
+                        <th>סכום ההזמנה</th>
+                        <th>הסרת פריט</th>
+                    </tr>
+                </thead>
+               <tbody></tbody>
+            </table>
+        </div>
+        <div >סה"כ לתשלום</div>
+        <div class="sum">0</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+﻿div {
+    margin: auto;
+    width: 50%;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+/* Styling the input fields */
+input {
+    margin: 5px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 80%;
+}
+
+/* Styling the buttons */
+button {
+    padding: 8px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+/* Styling the link */
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+/* Styling the register section */
+#register {
+    display: none; /* Hide the register section initially */
+}
+
+label {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Responsive design for smaller screens */
+@media only screen and (max-width: 600px) {
+    div {
+        width: 80%;
+    }
+
+    input {
+        width: 100%;
+    }
+}
