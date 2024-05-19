@@ -10,17 +10,21 @@ namespace Service
 {
     public class ProductService : IProductService
     {
-        IProductRepositary _repositary;
-        public ProductService(IProductRepositary productService)
+        IProductRepository productRepository;
+        public ProductService(IProductRepository productRepository)
         {
-            this._repositary = productService;
+            this.productRepository = productRepository;
         }
         public async Task<List<Product>> Get(string? descreption, int? min, int? max, string? name, int?[] categoryIds, int position = 20, int skip = 1)
         {
-            List<Product> reasult = await _repositary.Get(descreption,min,max,name, categoryIds, position , skip );
-            if (reasult == null)
-                return null;
-            return reasult;
+            List<Product> resault = await productRepository.Get(descreption,min,max,name, categoryIds, position , skip );
+            
+            return resault;
+        }
+
+        public async Task<List<Product>> Get()
+        {
+           return await productRepository.Get();
         }
     }
 }

@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace Repository
 {
-    public class ProductRepositary : IProductRepositary
+    public class ProductRepository : IProductRepository
     {
         _214346710DbContext productContext = new _214346710DbContext();
-        public ProductRepositary(_214346710DbContext productContext)
+        public ProductRepository(_214346710DbContext productContext)
         {
             this.productContext = productContext;
 
@@ -22,7 +22,7 @@ namespace Repository
         public async Task<List<Product>> Get(string? descreption, int? min, int? max, string? name, int?[] categoryIds, int position, int skip)
         {
             var query = productContext.Products.Include(p => p.Category).Where(product =>
-            product.ProductId > 0 &&
+            (name == null ? (true) : (product.Name.Contains(name))) &&
             (descreption == null ? (true) : (product.Description.Contains(descreption)))
             && ((min == null) ? (true) : (product.Price >= min))
             && ((max == null) ? (true) : (product.Price <= max))
@@ -30,10 +30,12 @@ namespace Repository
             .OrderBy(product => product.Price);
             Console.WriteLine(query.ToQueryString());
             List<Product> products = await query.ToListAsync();
-            //List<Product> l=await
             return products;
         }
 
-
+        public async Task<List<Product>> Get()
+        {
+            return await productContext.Products.ToListAsync();
+        }
     }
 }

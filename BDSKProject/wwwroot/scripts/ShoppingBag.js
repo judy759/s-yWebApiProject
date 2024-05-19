@@ -13,7 +13,6 @@ function showContent() {
     const placeOrd = document.getElementById("placeOr")
     console.log(placeOrd)
     placeOrd.addEventListener("click",async function () {
-        await alert("hello")
         await placeOrder()
     })
     for (let i = 0; i < data.length; i++) {
@@ -117,13 +116,11 @@ function decQuantity(item) {
 
 async function placeOrder() {
     try {
-        console.log("qqqqq")
         let data
         const UserId = localStorage.getItem("id")
         let basket = JSON.parse(localStorage.getItem("Basket " + localStorage.getItem("id")));
         let orderItems = []
         for (let i = 0; i < basket.length; i++) {
-            console.log("kjijij"+basket[i].prod.productId)
             orderItems.push({ ProductId: basket[i].prod.productId, Quantity: basket[i].quantity})
         }
         const order = {
@@ -143,10 +140,21 @@ async function placeOrder() {
         if (res.ok) {
             data = await res.json()
             console.log(data)
+            clearBasket()
         }
         else alert("error")
     }
     catch (err) {
     alert(err)
     }
+}
+
+function clearBasket() {
+    localStorage.setItem("Basket " + localStorage.getItem("id"), JSON.stringify([]))
+    localStorage.setItem("Price " + localStorage.getItem("id"), 0)
+    const parentElement = document.querySelector("#items tbody")
+    while (parentElement.firstChild) {
+        parentElement.removeChild(parentElement.firstChild);
+    }
+    showContent()
 }

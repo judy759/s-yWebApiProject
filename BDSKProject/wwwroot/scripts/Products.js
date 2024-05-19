@@ -1,5 +1,5 @@
 ﻿let categoryChecked = []
-let desc =""
+let n =""
 let min = 0
 let max = 100000
 let catString = ""
@@ -111,7 +111,7 @@ async function allCatgories() {
 
 
 const findNameEvent =async () => {
-    desc = document.getElementById("nameSearch").value
+    n = document.getElementById("nameSearch").value
     await filterProducts()
 };
 
@@ -130,7 +130,7 @@ async function filterProducts() {
             console.log("d"+catString)
         }
         console.log(catString)
-        const resp = await fetch(`api/Product?descreption=${desc}&min=${min}&max=${max}${catString}`);
+        const resp = await fetch(`api/Product?name=${n}&min=${min}&max=${max}${catString}`);
         if (resp.ok) {
             const data = await resp.json();
             const parentElement = document.getElementById('ProductList');
@@ -146,7 +146,7 @@ async function filterProducts() {
     }
 }
 async function cleanDom() {
-    desc = ""
+    n = ""
     categoryChecked = []
     min = null
     max = null
